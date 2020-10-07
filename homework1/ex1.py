@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 import os
+import math
+
 os.chdir('C:\\Projects\\ITS8030\\homework1')
 
 """
@@ -19,23 +21,24 @@ Here:
     if in_place is True, then the output image should be a copy of the input image. The default is False,
     i.e. the operations are performed on the input image.
 """
-def convolution(img_input, kernel, kernel_width, kernel_height, add, in_place = False):
+def convolution(img_input, kernel, add, in_place = False):
+
+    img_output = np.zeros_like(img_input)
+    size = kernel.shape[0]
+    pad = np.short(np.floor(size / 2))
+    img_padded = np.pad(img_input, (pad, pad), 'constant')
+
+    for x in range(img_input.shape[0]):
+        for y in range(img_input.shape[1]):
+            img_output[x, y] = (kernel * img_padded[x: x+size, y: y+size]).sum()
+    
     if(add):
         img_input += 128
 
-    img_output = np.zeros_like(img_input)
-    img_padded = np.zeros((img_input.shape[0] + 2, img_input.shape[1] + 2))
-    img_padded[1:-1, 1:-1] = img_input
-
-    for x in range(img_input.shape[1]):
-        for y in range(img_input.shape[0]):
-            img_output[y, x] = (kernel * img_padded[y: y+kernel_width, x: x+kernel_height]).sum()
-    
     return img_output
 
-
-img_input = cv2.imread('messi5.jpg', cv2.IMREAD_GRAYSCALE)
+# Use
+img_input = cv2.imread('ex1_input.jpg', cv2.IMREAD_GRAYSCALE)
 kernel = np.array([[0,-1,0],[-1,2,-1],[0,-1,0]])
-
-img_sharp = convolution(img_input, kernel, 3, 3, True)
-cv2.imwrite('output.jpg', img_sharp)
+img_result = convolution(img_input, kernel, False)
+cv2.imwrite('ex1_output.jpg', img_result)

@@ -23,7 +23,7 @@ f = Function('f')(x)
 f = cos(2*pi*x)
 
 #plot(f, ylim=(-1.2,1.2))
-k = symbols('k')
+x,y,k = symbols('x y k')
 
 ft = fourier_transform(f,x,k)
 pl.plot(ft)
