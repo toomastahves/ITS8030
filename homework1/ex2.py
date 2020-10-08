@@ -8,6 +8,11 @@ os.chdir('C:\\Projects\\ITS8030\\homework1')
 Task 2: Gaussian blur
 """
 def gaussian_blur_image(img_input, sigma):
+    kernel =  gaussian_blur_kernel(sigma)
+    img_result = convolution(img_input, kernel)
+    return img_result
+
+def gaussian_blur_kernel(sigma):
     radius = int(math.ceil(3 * sigma))
     kernel_size = 2 * radius + 1
     kernel = np.zeros((kernel_size, kernel_size))
@@ -21,8 +26,7 @@ def gaussian_blur_image(img_input, sigma):
             kernel[x+m, y+n] = res1 * res2
 
     kernel = kernel / kernel.sum()
-    img_result = convolution(img_input, kernel)
-    return img_result
+    return kernel
 
 # Use
 img_input = cv2.imread('ex2_input.jpg', cv2.IMREAD_GRAYSCALE)
