@@ -1,20 +1,25 @@
+import cv2
+import numpy as np
+import os
+import math
+from ex1 import convolution
+from ex2 import gaussian_blur_kernel
+os.chdir('C:\\Projects\\ITS8030\\homework1')
 """
 Task 3: Separable Gaussian blur
-
-Implement the function
-
-separable_gaussian_blur_image (image : np.ndarray, sigma : float, in_place : bool) -> np.ndarray
-
-to Gaussian blur an image using separate filters. "sigma" is the standard deviation of the Gaussian.
-The separable filter should first Gaussian blur the image horizontally, followed by blurring the
-image vertically. Call the convolution function twice, first with the horizontal kernel and then with
-the vertical kernel. Use the proper normalizing constant while creating the kernel(s) and then
-normalize using the given normalize_kernel() function before convolution. The final image should be
-identical to that of gaussian_blur_image.
-
-To do: Gaussian blur the image "songfestival.jpg" using this function with a sigma of 4.0, and save as "task3.png".
 """
-def separable_gaussian_blur_image (image : np.ndarray, sigma : float, in_place : bool = False) -> np.ndarray :  
-    "implement the function here"
-    raise "not implemented yet!"
+def separable_gaussian_blur_image(image, sigma, add):
+    kernel = gaussian_blur_kernel(sigma)
 
+    kernel_x = kernel[[math.floor(kernel.shape[1] / 2)],:]
+    kernel_y = kernel[:,[math.floor(kernel.shape[0] / 2)]]
+
+    image1 = convolution(image, kernel_x, add)
+    image2 = convolution(image1, kernel_y, add)
+
+    return image2
+
+# Use
+img_input = cv2.imread('ex3_input.jpg', cv2.IMREAD_GRAYSCALE)
+img_result = separable_gaussian_blur_image(img_input, 4, True)
+cv2.imwrite('ex3_output.jpg', img_result)
