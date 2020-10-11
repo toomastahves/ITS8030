@@ -22,7 +22,7 @@ def convolution(img_input, kernel, add = False):
     return img_output
 
 # Use
-img_input = cv2.imread('ex1_input.jpg', cv2.IMREAD_GRAYSCALE)
-kernel = np.array([[0,-1,0],[-1,2,-1],[0,-1,0]])
-img_result = convolution(img_input, kernel)
-cv2.imwrite('ex1_output.jpg', img_result)
+#img_input = cv2.imread('ex1_input.jpg', cv2.IMREAD_GRAYSCALE)
+#kernel = np.array([[0,-1,0],[-1,2,-1],[0,-1,0]])
+#img_result = convolution(img_input, kernel)
+#cv2.imwrite('ex1_output.jpg', img_result)
