@@ -13,6 +13,7 @@ def gaussian_blur_image(img_input, sigma):
     return img_result
 
 def gaussian_blur_kernel(sigma):
+    print('Generating gaussian kernel...')
     radius = int(math.ceil(3 * sigma))
     kernel_size = 2 * radius + 1
     kernel = np.zeros((kernel_size, kernel_size))
@@ -25,10 +26,13 @@ def gaussian_blur_kernel(sigma):
             res2 = np.exp(-(x**2+y**2)/(2*sigma**2))
             kernel[x+m, y+n] = res1 * res2
 
-    kernel = kernel / kernel.sum()
+    #kernel = kernel / kernel.sum()
     return kernel
 
 # Use
-img_input = cv2.imread('ex2_input.jpg', cv2.IMREAD_GRAYSCALE)
-img_result = gaussian_blur_image(img_input, 4)
-cv2.imwrite('ex2_output.jpg', img_result)
+def run():
+    img_input = cv2.imread('ex2_input.jpg', cv2.IMREAD_GRAYSCALE)
+    img_result = gaussian_blur_image(img_input, 4)
+    cv2.imwrite('ex2_output.jpg', img_result)
+
+#run()

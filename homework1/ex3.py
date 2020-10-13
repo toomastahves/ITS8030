@@ -14,11 +14,14 @@ def separable_gaussian_blur_image(image, sigma):
     image1 = convolution(image, kernel[:,[math.floor(kernel.shape[0] / 2)]])
     image2 = convolution(image1, kernel[[math.floor(kernel.shape[1] / 2)],:])
 
-    image2 += 64;
+    #image2 += 128;
 
     return image2
 
 # Use
-img_input = cv2.imread('ex3_input.jpg', cv2.IMREAD_GRAYSCALE).astype("float32")
-img_result = separable_gaussian_blur_image(img_input, 4)
-cv2.imwrite('ex3_output.jpg', img_result)
+def run():
+    img_input = cv2.imread('ex3_input.jpg', cv2.IMREAD_GRAYSCALE).astype("float32")
+    img_result = separable_gaussian_blur_image(img_input, 4)
+    cv2.imwrite('ex3_output.jpg', img_result)
+
+#run()
