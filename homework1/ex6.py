@@ -6,18 +6,6 @@ from ex1 import convolution
 os.chdir('C:\\Projects\\ITS8030\\homework1')
 """
 Task 6: Edge Detection
-
-Implement 
-sobel_image(image : np.ndarray, in_place : bool = False) -> np.ndarray
-to compute edge magnitude and orientation information. Convert the image into grayscale.
-Use the standard Sobel masks in X and Y directions:
-[[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]] and [[1, 2, 1], [0, 0, 0], [-1, -2, -1]] respectively to compute
-the edges. Note that the kernel values sum to 0 in these cases, so you don't need to normalize the
-kernels before convolving. Divide the image gradient values by 8 before computing the magnitude and
-orientation in order to avoid spurious edges. sobel_image should then display both the magnitude and
-orientation of the edges in the image.
-
-To do: Compute Sobel edge magnitude and orientation on "cactus.jpg" and save as "task6.png".
 """
 def sobel_image(image):
     kernelx = np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])
@@ -29,9 +17,9 @@ def sobel_image(image):
     imagey = imagey / 8
 
     magnitude = np.hypot(imagex, imagey)
-    direction = np.arctan(imagey / imagex)
+    orientation = np.arctan(imagey / (imagex + 0.01)) * 100 # adding 0.01 is hack to avoid division by zero error
 
-    return [magnitude, direction]
+    return [magnitude, orientation]
 
 # Use
 def run():

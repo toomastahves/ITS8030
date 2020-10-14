@@ -15,7 +15,7 @@ def convolution(img_input, kernel, add = False):
 
     for x in range(img_input.shape[0]):
         for y in range(img_input.shape[1]):
-            img_output[x, y] = (kernel * img_padded[x: x+size, y: y+size]).sum()
+            img_output[x, y] = (kernel * img_padded[x:x+size, y:y+size]).sum()
     
     if(add):
         img_output += 128

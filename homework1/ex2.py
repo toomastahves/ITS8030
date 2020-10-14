@@ -22,11 +22,11 @@ def gaussian_blur_kernel(sigma):
     n = int(kernel.shape[1] / 2)
     for x in range(-m, m+1):
         for y in range(-n, n+1):
-            res1 = 1 / (2*np.pi*sigma**2)
-            res2 = np.exp(-(x**2+y**2)/(2*sigma**2))
-            kernel[x+m, y+n] = res1 * res2
+            temp1 = 1 / (2*np.pi*sigma**2)
+            temp2 = np.exp(-(x**2+y**2)/(2*sigma**2))
+            kernel[x+m, y+n] = temp1 * temp2
 
-    #kernel = kernel / kernel.sum()
+    kernel = kernel / kernel.sum()
     return kernel
 
 # Use
