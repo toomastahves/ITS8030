@@ -31,8 +31,8 @@ def gaussian_blur_kernel(sigma):
 
 # Use
 def run():
-    img_input = cv2.imread('ex2_input.jpg', cv2.IMREAD_GRAYSCALE)
+    img_input = cv2.imread('input\\ex2_input.jpg', cv2.IMREAD_GRAYSCALE)
     img_result = gaussian_blur_image(img_input, 4)
-    cv2.imwrite('ex2_output.jpg', img_result)
+    cv2.imwrite('output/ex2_output.jpg', img_result)
 
 #run()

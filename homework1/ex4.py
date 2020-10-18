@@ -31,12 +31,12 @@ def second_deriv_image(image : np.ndarray, sigma : float, in_place : bool = Fals
 
 # Use
 def run():
-    img_input = cv2.imread('ex4_input.jpg', cv2.IMREAD_GRAYSCALE).astype("float32")
+    img_input = cv2.imread('input\\ex4_input.jpg', cv2.IMREAD_GRAYSCALE).astype("float32")
     img_result = first_deriv_image_x(img_input, 4).astype("uint8")
-    cv2.imwrite('ex4a_output.jpg', img_result)
+    cv2.imwrite('output/ex4a_output.jpg', img_result)
     img_result = first_deriv_image_x(img_input, 4).astype("uint8")
-    cv2.imwrite('ex4b_output.jpg', img_result)
+    cv2.imwrite('output/ex4b_output.jpg', img_result)
     img_result = first_deriv_image_x(img_input, 4).astype("uint8")
-    cv2.imwrite('ex4c_output.jpg', img_result)
+    cv2.imwrite('output/ex4c_output.jpg', img_result)
 
 #run()

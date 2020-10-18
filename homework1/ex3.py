@@ -20,8 +20,8 @@ def separable_gaussian_blur_image(image, sigma):
 
 # Use
 def run():
-    img_input = cv2.imread('ex3_input.jpg', cv2.IMREAD_GRAYSCALE).astype("float32")
+    img_input = cv2.imread('input\\ex3_input.jpg', cv2.IMREAD_GRAYSCALE).astype("float32")
     img_result = separable_gaussian_blur_image(img_input, 4)
-    cv2.imwrite('ex3_output.jpg', img_result)
+    cv2.imwrite('output/ex3_output.jpg', img_result)
 
 #run()

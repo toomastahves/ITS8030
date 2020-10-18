@@ -12,8 +12,8 @@ def sharpen_image(image, sigma, alpha):
 
 # Use
 def run():
-    img_input = cv2.imread('ex5_input.png', cv2.IMREAD_GRAYSCALE)
+    img_input = cv2.imread('input\\ex5_input.png', cv2.IMREAD_GRAYSCALE)
     img_result = sharpen_image(img_input, 1, 5)
-    cv2.imwrite('ex5_output.png', img_result)
+    cv2.imwrite('output/ex5_output.png', img_result)
 
 #run()

@@ -17,15 +17,17 @@ def sobel_image(image):
     imagey = imagey / 8
 
     magnitude = np.hypot(imagex, imagey)
-    orientation = np.arctan(imagey / (imagex + 0.01)) * 100 # adding 0.01 is hack to avoid division by zero error
+    # Adding 0.01 is hack to avoid division by zero error
+    # Multiplying by 100, so image will be visible, not black
+    orientation = np.arctan(imagey / (imagex + 0.01)) * 100
 
     return [magnitude, orientation]
 
 # Use
 def run():
-    img_input = cv2.imread('ex6_input.jpg', cv2.IMREAD_GRAYSCALE)
+    img_input = cv2.imread('input\\ex6_input.jpg', cv2.IMREAD_GRAYSCALE)
     img_result = sobel_image(img_input)
-    cv2.imwrite('ex6a_output.jpg', img_result[0])
-    cv2.imwrite('ex6b_output.jpg', img_result[1])
+    cv2.imwrite('output/ex6a_output.jpg', img_result[0])
+    cv2.imwrite('output/ex6b_output.jpg', img_result[1])
 
 #run()

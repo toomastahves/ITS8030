@@ -24,9 +24,9 @@ def convolution(img_input, kernel, add = False):
 
 # Use
 def run():
-    img_input = cv2.imread('ex1_input.jpg', cv2.IMREAD_GRAYSCALE)
+    img_input = cv2.imread('input\\ex1_input.jpg', cv2.IMREAD_GRAYSCALE)
     kernel = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])/9.0
     img_result = convolution(img_input, kernel)
-    cv2.imwrite('ex1_output.jpg', img_result)
+    cv2.imwrite('output/ex1_output.jpg', img_result)
 
 #run()
