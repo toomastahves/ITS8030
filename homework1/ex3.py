@@ -11,12 +11,13 @@ Task 3: Separable Gaussian blur
 def separable_gaussian_blur_image(image, sigma):
     kernel = gaussian_blur_kernel(sigma)
 
-    image1 = convolution(image, kernel[:,[math.floor(kernel.shape[0] / 2)]])
-    image2 = convolution(image1, kernel[[math.floor(kernel.shape[1] / 2)],:])
+    u = kernel[:, [math.floor(kernel.shape[0] / 2)]]
+    v = kernel[[math.floor(kernel.shape[1] / 2)], :]
 
-    #image2 += 128;
+    image1 = convolution(image, u)
+    image2 = convolution(image, v)
 
-    return image2
+    return (image1 + image2) / 2
 
 # Use
 def run():
