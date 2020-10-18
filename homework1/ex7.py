@@ -7,19 +7,21 @@ os.chdir('C:\\Projects\\ITS8030\\homework1')
 Task 7: Bilinear Interpolation
 """
 def bilinear_interpolation(image, x, y):
-
     if x < 0 or x > image.shape[1] - 1 or y < 0 or y > image.shape[0] - 1:
-        return (255, 255, 255)
-
-    x0 = math.floor(x)
-    x1 = x0 + 1
+        if(len(image.shape) == 3):
+            return (255, 255, 255)
+        else:
+            return 0
+    
     y0 = math.floor(y)
-    y1 = y0 + 1
+    x0 = math.floor(x)
+    x1 = math.ceil(x)
+    y1 = math.ceil(y)
 
-    q11 = image[y0, x0]
-    q12 = image[y1, x0]
-    q21 = image[y0, x1]
-    q22 = image[y1, x1]
+    q11 = image[y0][x0]
+    q12 = image[y0][x1]
+    q21 = image[y1][x0]
+    q22 = image[y1][x1]
 
     wa = (x1-x) * (y1-y)
     wb = (x1-x) * (y-y0)
@@ -45,6 +47,7 @@ def rotate_image(interpolation_fn, image_in, rotation_angle):
             image_out[y][x] = rgb
     return image_out
 
+# Use
 def run():
     img_input = cv2.imread('input\\ex7_input.png', cv2.IMREAD_COLOR)
     img_result = rotate_image(bilinear_interpolation, img_input, 20)
