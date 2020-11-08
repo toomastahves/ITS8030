@@ -1,0 +1,26 @@
+[
+    {
+      "annotatedResult": {
+        "boundingBoxes": [
+          {
+            "height": 124,
+            "label": "breathingHole",
+            "left": 1739,
+            "top": 1209,
+            "width": 147
+          },
+          {
+            "height": 869,
+            "label": "body",
+            "left": 233,
+            "top": 710,
+            "width": 2297
+          }
+        ],
+        "inputImageProperties": {
+          "height": 2160,
+          "width": 2880
+        }
+      }
+    }
+  ]
