@@ -7,5 +7,6 @@ images_original = os.listdir(input_path)
 
 for i in range(0, len(images_original)):
     image = Image.open(input_path + images_original[i])
+    # Resizes, but also stretches
     new_image = image.resize((1024, 1024))
     new_image.save(output_path + images_original[i])
