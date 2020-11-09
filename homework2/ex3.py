@@ -14,8 +14,9 @@ result_path = 'homework2/ex3_result/'
 
 for i in range(0, len(images)):
     # Load image and template
-    image = cv2.imread(image_path + images[i], 0)
-    template = cv2.imread(template_path + templates[i], 0)
+    image_name = images[i]
+    image = cv2.imread(image_path + image_name, 0)
+    template = cv2.imread(template_path + image_name, 0)
     w, h = template.shape[::-1]
 
     # Use template matching
@@ -32,4 +33,4 @@ for i in range(0, len(images)):
 
     # Save image to file
     image = Image.fromarray(image)
-    image.save(result_path + images[i])
+    image.save(result_path + image_name)
