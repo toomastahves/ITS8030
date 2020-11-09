@@ -4,6 +4,8 @@ from matplotlib import pyplot as plt
 from PIL import Image
 import os
 
+# Tutorial https://docs.opencv.org/master/d4/dc6/tutorial_py_template_matching.html
+
 image_path = 'homework2/images_original/'
 images = os.listdir(image_path)
 
