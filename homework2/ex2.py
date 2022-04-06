@@ -2,13 +2,15 @@ import json
 from PIL import Image, ImageDraw
 import os
 
-image_path = 'homework2/images_original/'
+# Old code, not used. Ex 2 was done manually.
+
+image_path = 'images_original/'
 image_files = os.listdir(image_path)
 
-label_path = 'homework2/labels/'
+label_path = 'labels/'
 label_files = os.listdir(label_path)
 
-labeled_images_path = 'homework2/labeled_images/'
+labeled_images_path = 'labeled_images/'
 
 def drawBrethingHoleRectangle(image):
     draw = ImageDraw.Draw(image)
@@ -44,11 +46,11 @@ for i in range(0, len(label_files)):
         # Crop body
         image_cropped = image.crop((body["left"], body["top"], 
             body["left"]+body["width"], body["top"]+body["height"]))
-        image_cropped.save('homework2/templates/body/' + image_files[i])
+        image_cropped.save('templates/body/' + image_files[i])
         # Crop breathing hole
         image_cropped = image.crop((breathingHole["left"], breathingHole["top"], 
             breathingHole["left"]+breathingHole["width"], breathingHole["top"]+breathingHole["height"]))
-        image_cropped.save('homework2/templates/breathingHole/' + image_files[i])
+        image_cropped.save('templates/breathingHole/' + image_files[i])
         # Draw boxes and save
         drawBrethingHoleRectangle(image)
         drawBodyRectangle(image)
